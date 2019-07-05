@@ -8,7 +8,7 @@ const forecast = (longitude, latitude, callback) => {
         } else if (body.error) {
             callback("Dark Sky is unable to find weather for the location provided");
         } else {
-            callback(undefined, `${body.daily.data[0].summary} It is currently ${body.currently.temperature} degrees out. There is a ${body.currently.precipProbability}% chance of rain.`)
+            callback(undefined, `${body.daily.summary} Currently: ${body.currently.summary} at ${body.currently.temperature}°F. Today will be a low of ${body.daily.data[0].temperatureLow}°F and a high of ${body.daily.data[0].temperatureHigh}°F with a ${body.daily.data[0].precipProbability * 100}% chance of ${body.daily.data[0].precipType}. Tomorrow will be a low of ${body.daily.data[1].temperatureLow}°F and a high of ${body.daily.data[1].temperatureHigh}°F with a ${body.daily.data[1].precipProbability * 100}% chance of ${body.daily.data[1].precipType}.`)
         }
     })
 };
